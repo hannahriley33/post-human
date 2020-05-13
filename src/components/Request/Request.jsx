@@ -26,6 +26,7 @@ const Request = ({ url, method, body, onChange, onSubmit }) => (
     </label>
 
     <textarea name="body" value={body} onChange={onChange}></textarea>
+    <button>Submit Request</button>
   </form>
 );
 
@@ -36,3 +37,5 @@ Request.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
 };
+
+export default Request;
