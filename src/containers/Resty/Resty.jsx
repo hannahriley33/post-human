@@ -20,7 +20,10 @@ export const Resty = () => {
   const handleSubmit = e => {
     e.preventDefault();
     makeRequest(url, method, body)
-      .then(json => setResponse(json));
+      .then(json => {
+        setResponse(json);
+        setHistory(prevHistory => [...prevHistory, { url, method }]);
+      });
   };
 
   return (
