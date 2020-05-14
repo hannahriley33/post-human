@@ -3,19 +3,17 @@ import Request from '../../components/Request/Request';
 import Response from '../../components/Response/Response';
 import { makeRequest } from '../../services/makeRequest';
 import HistoryList from '../../components/History/HistoryList';
+import { useLocalStorage } from '../../hooks/localStorage';
 
-const getHistory = () => localStorage.getItem('history') ? JSON.parse(localStorage.getItem('history')) : [];
+
 
 export const Resty = () => {
   const [url, setUrl] = useState('');
   const [method, setMethod] = useState('PUT');
   const [body, setBody] = useState('');
   const [response, setResponse] = useState({});
-  const [history, setHistory] = useState(getHistory);
+  const [history, setHistory] = useLocalStorage('history', []);
 
-  useEffect(() => {
-    localStorage.setItem('history', JSON.stringify(history));
-  }, [history]);
 
   const handleChange = ({ target }) => {
     if(target.name === 'url') setUrl(target.value);
